@@ -1,0 +1,613 @@
+/* =====================================================
+   STYLE.CSS — UI/UX MODERNO 2026
+===================================================== */
+
+:root {
+  --bg: #f6f7fb;
+  --text: #020617;
+  --card: #ffffff;
+  --accent: #0066ff;
+  --neon: #00ff80;
+  --radius: 16px;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  padding: 24px 16px 100px;
+}
+
+/* ================= DARK MODE ================= */
+body.night {
+  background: #020617;
+  color: #e5e7eb;
+}
+
+body.night textarea,
+body.night input {
+  background: #020617;
+  color: #f8fafc;
+  border: 1px solid #334155;
+}
+
+/* ================= HEADER ================= */
+header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+header button {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  margin: 6px;
+}
+
+/* ================= SEARCH ================= */
+#search-bar {
+  position: sticky;
+  top: 12px;
+  background: var(--card);
+  padding: 10px;
+  border-radius: var(--radius);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px;
+  z-index: 20;
+}
+
+#search-input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #cbd5f5;
+}
+
+/* ================= MENSAGENS ================= */
+.mensagens__item {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+/* ================= TEXTAREA - FORMULÁRIO ================= */
+textarea {
+  display: flex; gap: 1rem;
+  width: 100%;
+  min-height: 160px;       /* MAIS ALTO */
+  resize: vertical;       /* usuário pode ajustar */
+  padding: 11px;
+  border-radius: 16px;
+  font-size: 20px;
+  line-height: 2;
+}
+
+
+.mensagens__item button {
+  background: var(--accent);
+  color: #fff;
+  border-radius: 12px;
+  padding: 10px 14px;
+  border: none;
+  font-weight: 700;
+}
+
+/* ================= SEARCH HIGHLIGHT ================= */
+/* ================= SEARCH HIT (CTRL+F STYLE) ================= */
+.search-hit {
+  outline: 3px solid #00ff80;
+  background: rgba(0, 255, 128, 0.15);
+  border-radius: 8px;
+}
+
+
+/* ================= ORDEM - FUNDO AZUL ESCURO ================= */
+#ordem-container {
+  background: #000000; /* azul quase preto */
+  padding: 40px;
+  border-radius: 20px;
+  margin-top: 20px;
+  border: 3px solid #0f2a4d;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+  color: #ffffff;
+}
+
+#ordem-container textarea,
+#ordem-container input[type="text"],
+#ordem-container input[type="number"] {
+  background: #020617;
+  color: #f8fafc;
+  border: 3px solid #1e40af;
+}
+
+#ordem-container label,
+#ordem-container h2 {
+  color: #f8fafc;
+}
+
+
+#resultado {
+  margin-top: 16px;
+  padding: 16px;
+  background: #020617;
+  color: var(--neon);
+  border-radius: 14px;
+  font-family: monospace;
+}
+
+/* ================= AUTO FILL ANIMATION ================= */
+@keyframes autofillGlow {
+  0% {
+    box-shadow: 0 0 0 rgba(0, 102, 255, 0);
+    background-color: rgba(0, 102, 255, 0.15);
+  }
+  100% {
+    box-shadow: 0 0 18px rgba(0, 102, 255, 0.6);
+    background-color: rgba(0, 102, 255, 0.08);
+  }
+}
+
+.autofill-animate {
+  animation: autofillGlow 0.45s ease-out;
+}
+
+
+/* ================= CTA FLOAT ================= */
+.cta-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: linear-gradient(135deg, #0066ff, #00ff80);
+  color: #001b10;
+  padding: 16px 24px;
+  border-radius: 999px;
+  font-weight: 900;
+  border: none;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.copy-flash {
+  animation: flashCopy 0.4s ease;
+}
+
+@keyframes flashCopy {
+  from {
+    background: rgba(255, 208, 0, 0.35);
+  }
+  to {
+    background: transparent;
+  }
+}
+
+
+/* ================= MOBILE ================= */
+@media (max-width: 720px) {
+  textarea {
+    min-height: 70px;
+  }
+}
+
+/* ================= TOAST ANIMADO ================= */
+
+#__toast {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 18px 30px;
+  border-radius: 18px;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: .4px;
+  background: linear-gradient(135deg, #ffd000, #ff6a00);
+  color: #2b1400;
+  box-shadow: 0 25px 60px rgba(255, 106, 0, 0.45);
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.toast-show {
+  animation: toastIn 0.45s cubic-bezier(.22,1,.36,1) forwards;
+}
+
+.toast-hide {
+  animation: toastOut 0.35s ease forwards;
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-12px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
+@keyframes toastOut {
+  from {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.9);
+  }
+}
+
+/* ================= FORM LAYOUT ================= */
+
+#ordem-container {
+  padding: 18px 22px;   /* menos padding */
+}
+
+#ordem-container .field {
+  margin-bottom: 14px; /* menos espaço entre campos */
+}
+
+
+
+
+.section-led {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 102, 255, 0.18),
+    rgba(0, 102, 255, 0.05)
+  );
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.section-suporte {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 255, 128, 0.18),
+    rgba(0, 255, 128, 0.05)
+  );
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.section-obs {
+  background: linear-gradient(
+    135deg,
+    rgba(88, 101, 242, 0.18),
+    rgba(88, 101, 242, 0.05)
+  );
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.section-dados {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 208, 0, 0.18),
+    rgba(255, 208, 0, 0.05)
+  );
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.section-led h3 { color: #3b82f6; }
+.section-suporte h3 { color: #00ff80; }
+.section-obs h3 { color: #818cf8; }
+.section-dados h3 { color: #ffd000; }
+
+/* =====================================================
+   FORMULÁRIO — REFINO VISUAL (CSS ONLY)
+===================================================== */
+
+/* ---------- Container mais compacto ---------- */
+#ordem-container {
+  padding: 18px 22px;
+  gap: 16px;
+}
+
+/* ---------- Textareas mais esticados ---------- */
+#ordem-container textarea {
+  width: 100%;
+  min-height: 220px;
+  padding: 16px 18px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Suporte e OBS ainda maiores */
+#suporte,
+#obs {
+  min-height: 280px;
+}
+
+/* ---------- Labels e títulos mais fortes ---------- */
+#ordem-container label,
+#ordem-container h2,
+#ordem-container h3 {
+  display: block;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: .4px;
+  margin: 20px 0 14px;
+}
+
+/* ---------- Agrupamento visual automático ---------- */
+/* Cada bloco que contém um textarea vira uma "seção" */
+#ordem-container textarea {
+  border-radius: 18px;
+}
+
+/* ---------- CORES POR SEÇÃO (auto-detectadas pela ordem) ---------- */
+
+/* 1º textarea — Reclamação (AZUL) */
+#ordem-container textarea:nth-of-type(1) {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 102, 255, 0.18),
+    rgba(0, 102, 255, 0.05)
+  );
+}
+
+/* 2º textarea — Suporte (VERDE NEON) */
+#ordem-container textarea:nth-of-type(2) {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 255, 128, 0.18),
+    rgba(0, 255, 128, 0.05)
+  );
+}
+
+/* 3º textarea — OBS (ROXO TECH) */
+#ordem-container textarea:nth-of-type(3) {
+  background: linear-gradient(
+    135deg,
+    rgba(129, 140, 248, 0.18),
+    rgba(129, 140, 248, 0.05)
+  );
+}
+
+/* 4º textarea — Telefones / Referências (AMARELO) */
+#ordem-container textarea:nth-of-type(4),
+#ordem-container textarea:nth-of-type(5) {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 208, 0, 0.18),
+    rgba(255, 208, 0, 0.05)
+  );
+}
+
+/* ---------- Ajuste no foco ---------- */
+#ordem-container textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 255, 128, 0.45);
+}
+
+/* ---------- Dark mode ---------- */
+body.night #ordem-container textarea {
+  color: #f8fafc;
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 720px) {
+  #ordem-container textarea {
+    min-height: 200px;
+  }
+}
+
+/* =====================================================
+   BOTÕES PRINCIPAIS — DESTAQUE MÁXIMO
+===================================================== */
+
+/* Container dos botões (quando estão juntos) */
+#ordem-container button {
+  min-height: 56px;
+  font-size: 17px;
+  font-weight: 900;
+  letter-spacing: .5px;
+  border-radius: 18px;
+  padding: 0 28px;
+  cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+}
+
+/* ================= BOTÃO GERAR ORDEM ================= */
+#gerar-ordem,
+button[id*="gerar"] {
+  background: linear-gradient(135deg, #0066ff, #00ff80);
+  color: #001b10;
+  box-shadow: 0 20px 45px rgba(0, 102, 255, 0.45);
+  margin-top: 28px;
+}
+
+/* Hover */
+#gerar-ordem:hover,
+button[id*="gerar"]:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 30px 65px rgba(0, 102, 255, 0.65);
+}
+
+/* ================= BOTÃO LIMPAR ================= */
+#limpar-formulario,
+button[id*="limpar"] {
+  background: linear-gradient(135deg, #ffcc00, #ff6a00);
+  color: #2b1400;
+  box-shadow: 0 18px 40px rgba(255, 106, 0, 0.45);
+  margin-top: 14px;
+}
+
+/* Hover */
+#limpar-formulario:hover,
+button[id*="limpar"]:hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 25px 55px rgba(255, 106, 0, 0.65);
+}
+
+/* ================= FOCO VISUAL ================= */
+#ordem-container button:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(0, 255, 128, 0.5);
+}
+
+/* ================= POSICIONAMENTO MAIS VISÍVEL ================= */
+/* Empurra os botões para o centro */
+#ordem-container {
+  text-align: left;
+}
+
+/* Botões ocupam boa largura */
+#ordem-container button {
+  width: min(240px, 100%);
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 720px) {
+  #ordem-container button {
+    font-size: 18px;
+    min-height: 60px;
+  }
+}
+
+/* =====================================================
+   BARRA FIXA DE AÇÕES + LINHA ANIMADA
+===================================================== */
+
+/* ---------- Barra fixa no final ---------- */
+#ordem-container {
+  padding-bottom: 120px; /* espaço para a barra fixa */
+}
+
+#ordem-container::after {
+  content: "";
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 96px;
+  background: linear-gradient(
+    180deg,
+    rgba(2, 6, 23, 0),
+    rgba(2, 6, 23, 0.85)
+  );
+  z-index: 40;
+  pointer-events: none;
+}
+
+/* ---------- Wrapper visual da barra ---------- */
+#ordem-container button[id*="gerar"],
+#ordem-container button[id*="limpar"] {
+  position: fixed;
+  bottom: 18px;
+  z-index: 50;
+}
+
+/* Posição dos botões lado a lado */
+#ordem-container button[id*="gerar"] {
+  left: 50%;
+  transform: translateX(-110%);
+}
+
+#ordem-container button[id*="limpar"] {
+  left: 50%;
+  transform: translateX(10%);
+}
+
+/* ---------- Linha colorida animada ---------- */
+#ordem-container::before {
+  content: "";
+  position: fixed;
+  bottom: 94px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 320px;
+  height: 4px;
+  border-radius: 4px;
+  background: linear-gradient(
+    90deg,
+    #0066ff,
+    #00ff80,
+    #ffcc00,
+    #ff6a00,
+    #0066ff
+  );
+  background-size: 300% 100%;
+  animation: actionLine 3s linear infinite;
+  z-index: 45;
+}
+
+/* ---------- Animação da linha ---------- */
+@keyframes actionLine {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 300% 50%;
+  }
+}
+
+/* ---------- Ajustes mobile ---------- */
+@media (max-width: 720px) {
+  #ordem-container button[id*="gerar"],
+  #ordem-container button[id*="limpar"] {
+    width: calc(50% - 20px);
+  }
+
+  #ordem-container button[id*="gerar"] {
+    transform: translateX(-102%);
+  }
+
+  #ordem-container button[id*="limpar"] {
+    transform: translateX(2%);
+  }
+
+  #ordem-container::before {
+    width: 240px;
+  }
+}
+
+
+/* =====================================================
+   BOTÃO COPIAR — LINHA ANIMADA
+===================================================== */
+
+button:has(svg),
+button:has(span),
+button[id*="copiar"] {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Linha inferior */
+button[id*="copiar"]::after {
+  content: "";
+  position: absolute;
+  left: -100%;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    #00ff80,
+    #0066ff,
+    #00ff80
+  );
+}
+
+/* Anima ao hover / focus */
+button[id*="copiar"]:hover::after,
+button[id*="copiar"]:focus::after {
+  animation: copiarLinha 0.6s ease forwards;
+}
+
+@keyframes copiarLinha {
+  from { left: -100%; }
+  to { left: 0%; }
+}
